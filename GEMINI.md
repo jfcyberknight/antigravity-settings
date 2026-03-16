@@ -12,6 +12,7 @@
     - Implement sleek dark modes and glassmorphism.
     - Use modern typography (Google Fonts like Inter, Roboto, Outfit) instead of browser defaults.
 - **Interactivity**: Add smooth micro-animations, transitions, and hover effects.
+- **Inspiration Visuelle**: Toutes les applications et interfaces doivent s'inspirer du style et de l'esthétique de l'image : `C:\Users\jf.vallee\project\darkmedia\.youtube\Gemini_Generated_Image_u9p12ou9p12ou9p1.png`.
 - **Demonstration**: Never use generic placeholders. Use `generate_image` for realistic assets.
 
 ## 3. Technical Stack & Development
