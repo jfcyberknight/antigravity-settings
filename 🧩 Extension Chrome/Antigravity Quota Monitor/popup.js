@@ -22,7 +22,7 @@ navItems.forEach(item => {
 
 async function updateDashboard() {
     try {
-        const response = await fetch('quota_data.js?t=' + new Date().getTime());
+        const response = await fetch('quota_data.js', { cache: 'no-store' });
         if (!response.ok) throw new Error('Network response was not ok');
         
         const textData = await response.text();
