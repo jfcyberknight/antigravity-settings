@@ -7,14 +7,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #0d0d0f;
-            --glass: rgba(18, 18, 22, 0.85);
-            --border: rgba(255, 255, 255, 0.08);
-            --accent: #ff003c;
-            --accent-glow: rgba(255, 0, 60, 0.5);
-            --metallic: #e0e0e0;
-            --text: #ffffff;
-            --text-dim: #94949a;
+            --bg: #1c2125; /* Dark metallic gray from the logo background */
+            --glass: rgba(28, 33, 37, 0.75); /* Darker glass to blend with bg */
+            --border: rgba(255, 255, 255, 0.05); /* Softer borders */
+            --accent: #d21727; /* Deep crimson red from the eagle logo */
+            --accent-glow: rgba(210, 23, 39, 0.6);
+            --metallic: #8c9096; /* Lighter silver/grey from eagle wings */
+            --text: #e0e4e8;
+            --text-dim: #7a8086;
             --card-bg: rgba(255, 255, 255, 0.02);
         }
 
@@ -48,10 +48,11 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 100vw;
-            height: 100vh;
-            background: radial-gradient(circle at center, transparent 10%, rgba(13, 13, 15, 0.9) 100%);
+            width: 80vw;
+            height: 80vh;
+            background: radial-gradient(circle at center, rgba(210, 23, 39, 0.15) 0%, transparent 60%);
             z-index: -1;
+            filter: blur(40px);
         }
 
         .dashboard {
@@ -94,15 +95,31 @@
         }
 
         .logo {
-            font-size: 22px;
-            font-weight: 600;
+            font-size: 24px;
+            font-weight: 700;
             margin-bottom: 30px;
-            background: linear-gradient(90deg, #fff 0%, var(--accent) 100%);
+            background: linear-gradient(135deg, var(--text) 0%, var(--metallic) 50%, #4a4d52 100%);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
-            letter-spacing: -1px;
-            filter: drop-shadow(0 0 10px var(--accent-glow));
+            letter-spacing: 1px;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo img {
+            width: 40px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(210, 23, 39, 0.3);
+        }
+
+        .logo span {
+            color: var(--accent);
+            -webkit-text-fill-color: var(--accent);
+            text-shadow: 0 0 15px var(--accent-glow);
         }
 
         .nav {
@@ -234,10 +251,10 @@
 
         .progress-bar {
             height: 100%;
-            background: linear-gradient(90deg, #ff003c, #ff4d6d);
+            background: linear-gradient(90deg, #94131e, var(--accent));
             border-radius: 10px;
             transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 0 20px rgba(255, 0, 60, 0.5);
+            box-shadow: 0 0 20px var(--accent-glow);
         }
 
         .quota-status {
@@ -282,7 +299,10 @@
     <div class="background-glow"></div>
     <div class="dashboard">
         <aside class="sidebar">
-            <div class="logo">Antigravity</div>
+            <div class="logo">
+                <img src="../../Gemini_Generated_Image_vbuu0rvbuu0rvbuu.png" alt="DarkMedia Logo" id="logo-img">
+                DarkMedia <span>Pro</span>
+            </div>
             <ul class="nav">
                 <li class="nav-item active">Usage Global</li>
                 <li class="nav-item">Sessions</li>

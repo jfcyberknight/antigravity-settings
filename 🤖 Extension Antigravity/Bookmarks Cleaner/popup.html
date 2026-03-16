@@ -7,13 +7,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #0d0d0f;
-            --glass: rgba(18, 18, 22, 0.85);
-            --border: rgba(255, 255, 255, 0.08);
-            --accent: #ff003c;
-            --accent-glow: rgba(255, 0, 60, 0.5);
-            --text: #ffffff;
-            --text-dim: #94949a;
+            --bg: #1c2125;
+            --glass: rgba(28, 33, 37, 0.75);
+            --border: rgba(255, 255, 255, 0.05);
+            --accent: #d21727;
+            --accent-glow: rgba(210, 23, 39, 0.6);
+            --text: #e0e4e8;
+            --text-dim: #7a8086;
         }
 
         body {
@@ -21,7 +21,7 @@
             margin: 0;
             padding: 24px;
             font-family: 'Outfit', sans-serif;
-            background: var(--bg);
+            background: var(--bg) url('background.png') center/cover no-repeat;
             color: var(--text);
             overflow: hidden;
             display: flex;
@@ -65,28 +65,25 @@
         }
 
         .icon-container {
-            width: 80px;
-            height: 80px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--border);
-            border-radius: 20px;
+            width: 60px;
+            height: auto;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 0 15px rgba(210, 23, 39, 0.3);
             overflow: hidden;
             transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .icon-container:hover {
             transform: scale(1.05);
-            border-color: var(--accent);
             box-shadow: 0 8px 32px var(--accent-glow);
         }
 
         .icon-container img {
-            width: 60px;
-            height: 60px;
+            width: 100%;
+            height: auto;
         }
 
         h1 {
@@ -184,7 +181,7 @@
     <div class="glass-panel">
         <div class="header">
             <div class="icon-container">
-                <img src="icons/icon128.png" alt="Smart Cleaner Logo">
+                <img src="logo.png" alt="DarkMedia Logo">
             </div>
             <h1>Smart Cleaner</h1>
             <p>Intelligence de tri v3.15</p>
