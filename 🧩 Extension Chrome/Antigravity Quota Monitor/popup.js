@@ -20,19 +20,19 @@ navItems.forEach(item => {
     });
 });
 
-function updateDashboard() {
-    // Remove previous script if exists
-    const oldScript = document.getElementById('data-script');
-    if (oldScript) oldScript.remove();
+async function updateDashboard() {
+    try {
+        const response = await fetch('quota_data.js?t=' + new Date().getTime());
+        if (!response.ok) throw new Error('Network response was not ok');
+        
+        const textData = await response.text();
+        
+        // quota_data.js looks like: window.quotaData = { ... };
+        // We need to extract just the JSON part to avoid eval()
+        const jsonString = textData.replace('window.quotaData = ', '').replace(/;$/, '');
+        const data = JSON.parse(jsonString);
 
-    // Inject new script with cache buster
-    const script = document.createElement('script');
-    script.id = 'data-script';
-    script.src = 'quota_data.js?t=' + new Date().getTime();
-    
-    script.onload = () => {
-        if (!window.quotaData) return;
-        const data = window.quotaData;
+        if (!data) return;
 
         document.getElementById('usage-val').innerText = data.usage + '%';
         if (document.getElementById('usage-bar')) {
@@ -53,14 +53,11 @@ function updateDashboard() {
             const date = new Date(data.lastUpdate);
             document.getElementById('last-update').innerText = 'Dernière mise à jour: ' + date.toLocaleTimeString();
         }
-    };
 
-    script.onerror = () => {
-        console.error('Erreur lors du chargement de quota_data.js');
+    } catch (error) {
+        console.error('Erreur lors du chargement de quota_data.js:', error);
         document.getElementById('status-text').innerText = 'Attente des données (lance /quota-monitor)...';
-    };
-
-    document.body.appendChild(script);
+    }
 }
 
 // Update every 5 seconds
