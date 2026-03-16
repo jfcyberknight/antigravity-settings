@@ -46,3 +46,8 @@
     - **19 octobre**: Point décisionnel (Go / No Go).
     - **30 octobre**: Mise en service (MES).
     - **14 novembre**: Début du support étendu.
+
+## 8. Quota & Performance Monitoring
+- **Heuristique** : Avant chaque tâche complexe, l'Orchestrateur peut appeler `/quota-monitor` pour estimer l'impact.
+- **Visibilité** : Le dashboard premium `quota_dashboard.html` est la référence visuelle pour l'état du système.
+- **Optimisation** : Prioriser les solutions à faible consommation de tokens quand plusieurs approches sont possibles.
