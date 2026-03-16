@@ -183,6 +183,13 @@
             border-radius: 50%;
             box-shadow: 0 0 10px #2ed573;
         }
+
+        .last-update {
+            font-size: 12px;
+            color: var(--text-dim);
+            margin-top: 5px;
+            text-align: right;
+        }
     </style>
 </head>
 <body>
@@ -205,32 +212,65 @@
             <div class="stats-grid">
                 <div class="card">
                     <div class="card-label">Usage Contextuel</div>
-                    <div class="card-value">65.4%</div>
+                    <div id="usage-val" class="card-value">--%</div>
                     <div class="progress-container">
-                        <div class="progress-bar" style="width: 65%;"></div>
+                        <div id="usage-bar" class="progress-bar" style="width: 0%;"></div>
                     </div>
                 </div>
                 <div class="card">
                     <div class="card-label">Tokens Estimés</div>
-                    <div class="card-value">12.4K</div>
+                    <div id="tokens-val" class="card-value">--K</div>
                     <div class="progress-container">
-                        <div class="progress-bar" style="width: 40%; background: #eccc68; box-shadow: 0 0 15px #eccc68;"></div>
+                        <div id="tokens-bar" class="progress-bar" style="width: 0%; background: #eccc68; box-shadow: 0 0 15px #eccc68;"></div>
                     </div>
                 </div>
                 <div class="card">
                     <div class="card-label">Complexité Moyenne</div>
-                    <div class="card-value">Moderate</div>
+                    <div id="complexity-val" class="card-value">--</div>
                 </div>
                 <div class="card">
                     <div class="card-label">Coût Session</div>
-                    <div class="card-value">$0.24</div>
+                    <div id="cost-val" class="card-value">$--</div>
                 </div>
             </div>
             <div class="quota-status">
                 <div class="status-dot"></div>
-                <span>Votre quota est en bonne santé. Impact de la dernière requête : BAS.</span>
+                <span id="status-text">Chargement des données...</span>
             </div>
+            <div id="last-update" class="last-update">Dernière mise à jour: --</div>
         </main>
     </div>
+
+    <script>
+        async function updateDashboard() {
+            try {
+                const response = await fetch('quota_data.json', { cache: 'no-store' });
+                const data = await response.json();
+
+                document.getElementById('usage-val').innerText = data.usage + '%';
+                document.getElementById('usage-bar').style.width = data.usage + '%';
+                
+                document.getElementById('tokens-val').innerText = data.tokens;
+                // Heuristic mapping for token bar (e.g. max 500K)
+                const tokenPercent = Math.min((parseFloat(data.tokens) / 500) * 100, 100);
+                document.getElementById('tokens-bar').style.width = tokenPercent + '%';
+
+                document.getElementById('complexity-val').innerText = data.complexity;
+                document.getElementById('cost-val').innerText = '$' + data.cost;
+                document.getElementById('status-text').innerText = data.status;
+                
+                const date = new Date(data.lastUpdate);
+                document.getElementById('last-update').innerText = 'Dernière mise à jour: ' + date.toLocaleTimeString();
+
+            } catch (error) {
+                console.error('Erreur lors de la mise à jour du dashboard:', error);
+                document.getElementById('status-text').innerText = 'Erreur de synchronisation...';
+            }
+        }
+
+        // Update every 5 seconds
+        setInterval(updateDashboard, 5000);
+        updateDashboard();
+    </script>
 </body>
 </html>
