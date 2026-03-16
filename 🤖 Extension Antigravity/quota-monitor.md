@@ -27,10 +27,14 @@ L'agent utilise les critères suivants pour évaluer l'impact :
        complexity = if ($impact -eq "BAS") { "Simple" } else { "Moderate" }
        cost = "$([math]::Round((Get-Random -Minimum 0.05 -Maximum 0.50), 2))"
        status = "Analyse terminée. Impact de la requête : $impact."
-       lastUpdate = (Get-Date -Format "yyyy-MM-ddTHH:mm:ssZ")
    }
    $jsonData = $data | ConvertTo-Json -Compress
-   "window.quotaData = $jsonData;" | Out-File -FilePath "quota_data.js" -Encoding utf8
+   # Save to both local and Chrome Tools extension folder
+    $jsPath = "$PSScriptRoot/🧩 Extension Chrome/quota_data.js"
+    $chromeToolsPath = "C:/Users/jf.vallee/project/chrome-tools/extensions/Antigravity Quota Monitor/quota_data.js"
+    
+    "window.quotaData = $jsonData;" | Out-File -FilePath $jsPath -Encoding utf8 -Force
+    "window.quotaData = $jsonData;" | Out-File -FilePath $chromeToolsPath -Encoding utf8 -Force
    Write-Host "--- QUOTA IMPACT REPORT ---"
    Write-Host "Impact: $impact"
    Write-Host "Data saved to quota_data.js"

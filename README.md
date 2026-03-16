@@ -32,10 +32,11 @@ Les agents sont situés dans `🤖 Extension Antigravity/`. Pour les activer, il
 - Tu peux invoquer `@[/git-automate]` ou `@[/quota-monitor]` directement.
 
 ### 3. Extension Chrome (Dashboard)
-L'extension se trouve dans le dossier `🧩 Extension Chrome/`.
+L'extension est hébergée dans ton dépôt central de tools :
 1. Ouvre Chrome et accède à `chrome://extensions/`.
 2. Active le **Mode développeur**.
-3. Clique sur **Charger l'extension décompressée** et sélectionne le dossier `🧩 Extension Chrome` situé dans ce projet.
+3. Clique sur **Charger l'extension décompressée** et sélectionne le dossier :
+   `C:\Users\jf.vallee\project\chrome-tools\extensions\Antigravity Quota Monitor`
 4. Épingle l'icône Antigravity Quota Monitor pour y accéder en un clic !
 
 > [!NOTE]
