@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antigravity | Quota Monitor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0a0c;
+            --glass: rgba(255, 255, 255, 0.05);
+            --border: rgba(255, 255, 255, 0.1);
+            --accent: #6c5ce7;
+            --accent-glow: rgba(108, 92, 231, 0.3);
+            --text: #ffffff;
+            --text-dim: #a0a0a0;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .background-glow {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80vw;
+            height: 80vh;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+            z-index: -1;
+            filter: blur(100px);
+        }
+
+        .dashboard {
+            width: 900px;
+            height: 600px;
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 40px;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .sidebar {
+            border-right: 1px solid var(--border);
+            padding-right: 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 40px;
+            background: linear-gradient(90deg, #fff, #6c5ce7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav {
+            list-style: none;
+            padding: 0;
+        }
+
+        .nav-item {
+            padding: 12px 20px;
+            border-radius: 12px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: var(--text-dim);
+        }
+
+        .nav-item.active {
+            background: var(--glass);
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+
+        .nav-item:hover {
+            color: var(--text);
+        }
+
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 32px;
+            font-weight: 600;
+        }
+
+        .header p {
+            color: var(--text-dim);
+            margin: 5px 0 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            padding: 24px;
+            border-radius: 20px;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .card-label {
+            font-size: 14px;
+            color: var(--text-dim);
+            margin-bottom: 10px;
+        }
+
+        .card-value {
+            font-size: 28px;
+            font-weight: 600;
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            margin-top: 15px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: var(--accent);
+            border-radius: 4px;
+            width: 65%;
+            box-shadow: 0 0 15px var(--accent);
+        }
+
+        .quota-status {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(46, 213, 115, 0.1);
+            border-radius: 15px;
+            color: #2ed573;
+            font-size: 14px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: #2ed573;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #2ed573;
+        }
+    </style>
+</head>
+<body>
+    <div class="background-glow"></div>
+    <div class="dashboard">
+        <aside class="sidebar">
+            <div class="logo">Antigravity</div>
+            <ul class="nav">
+                <li class="nav-item active">Usage Global</li>
+                <li class="nav-item">Sessions</li>
+                <li class="nav-item">Settings</li>
+                <li class="nav-item">API Tokens</li>
+            </ul>
+        </aside>
+        <main class="main-content">
+            <div class="header">
+                <h1>Quota Monitor</h1>
+                <p>Analyse en temps réel de votre consommation.</p>
+            </div>
+            <div class="stats-grid">
+                <div class="card">
+                    <div class="card-label">Usage Contextuel</div>
+                    <div class="card-value">65.4%</div>
+                    <div class="progress-container">
+                        <div class="progress-bar" style="width: 65%;"></div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-label">Tokens Estimés</div>
+                    <div class="card-value">12.4K</div>
+                    <div class="progress-container">
+                        <div class="progress-bar" style="width: 40%; background: #eccc68; box-shadow: 0 0 15px #eccc68;"></div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-label">Complexité Moyenne</div>
+                    <div class="card-value">Moderate</div>
+                </div>
+                <div class="card">
+                    <div class="card-label">Coût Session</div>
+                    <div class="card-value">$0.24</div>
+                </div>
+            </div>
+            <div class="quota-status">
+                <div class="status-dot"></div>
+                <span>Votre quota est en bonne santé. Impact de la dernière requête : BAS.</span>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

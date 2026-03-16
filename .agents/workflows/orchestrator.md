@@ -13,6 +13,7 @@ Cet agent est le cerveau qui coordonne tous les autres agents spécialisés. Il 
 - **Gestion Git/GitHub** : Fait appel à `@[/github-manager]` — **TOUTES les opérations git sont déléguées automatiquement sans intervention de l'utilisateur**.
 - **Déploiement** : Fait appel à `@[/deployment]`.
 - **Maintenance** : Fait appel à `@[/workflow-monitor]`.
+- **Analyse de Quota** : Fait appel à `@[/quota-monitor]` — permet d'estimer l'impact énergétique et financier d'une requête avant exécution.
 - **Optimisation IA** : Utilise `@[/smart-router]`.
 - **Nouveau Projet** : Fait appel à `@[/repo-bootstrapper]` pour initialiser un nouveau repository.
 - **Sync Agents** : Fait appel à `@[/agent-sync]` — appelé **automatiquement** après toute modification d'un workflow dans `.agents/workflows/`.
