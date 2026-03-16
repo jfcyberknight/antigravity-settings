@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookmarks Cleaner Pro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #8b5cf6;
+            --primary-glow: rgba(139, 92, 246, 0.4);
+            --bg: #030712;
+            --card: rgba(31, 41, 55, 0.5);
+            --border: rgba(255, 255, 255, 0.1);
+            --text: #f9fafb;
+            --text-dim: #9ca3af;
+        }
+
+        body {
+            width: 340px;
+            margin: 0;
+            padding: 24px;
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .glass-panel {
+            width: 100%;
+            background: var(--card);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 24px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            text-align: center;
+        }
+
+        .icon-container {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, #8b5cf6, #d946ef);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 16px var(--primary-glow);
+            margin-bottom: 4px;
+        }
+
+        svg {
+            color: white;
+        }
+
+        h1 {
+            font-size: 1.25rem;
+            margin: 0;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        p {
+            font-size: 0.875rem;
+            color: var(--text-dim);
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        .action-area {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            width: 100%;
+        }
+
+        .btn {
+            position: relative;
+            width: 100%;
+            padding: 14px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 0.9375rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 4px 12px var(--primary-glow);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px var(--primary-glow);
+            filter: brightness(1.1);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn:disabled {
+            background: #374151;
+            cursor: wait;
+            box-shadow: none;
+            transform: none;
+        }
+
+        .loader {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        #status {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            text-align: center;
+            min-height: 1.5em;
+            line-height: 1.6;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 8px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        /* Micro-animations */
+        .pulse {
+            animation: pulse-bg 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+        }
+
+        @keyframes pulse-bg {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+    </style>
+</head>
+<body>
+    <div class="glass-panel">
+        <div class="header">
+            <div class="icon-container">
+                <img src="icons/icon128.png" alt="Smart Cleaner Logo" style="width: 44px; height: 44px;">
+            </div>
+            <h1>Smart Cleaner</h1>
+            <p>Intelligence de tri v3.13</p>
+        </div>
+
+        <div class="action-area">
+            <button id="cleanBtn" class="btn">
+                <span class="loader" id="loader"></span>
+                <span id="btnText">Nettoyage Intelligent</span>
+            </button>
+            <div id="status">Prêt à organiser.</div>
+        </div>
+    </div>
+    <script src="popup.js"></script>
+</body>
+</html>

@@ -31,6 +31,7 @@
 
 ## 5. Git & Workflow Conventions
 - **Deployment**: Verify all identities and configurations before deploying to Vercel.
+- **Extensions**: Toujours incrémenter le numéro de version (version bump) dans le `manifest.json` lors de la modification d'une extension.
 - **SEO**: Automatically implement SEO best practices (descriptive titles, meta descriptions, semantic HTML).
 
 ## 6. SQL & WLanguage Style (WinDev)

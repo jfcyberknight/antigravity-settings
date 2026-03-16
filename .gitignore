@@ -1,0 +1,8 @@
+# Extension Data Backup Files
+favoris_*.html
+*.bak
+*.tmp
+
+# System Files
+.DS_Store
+Thumbs.db

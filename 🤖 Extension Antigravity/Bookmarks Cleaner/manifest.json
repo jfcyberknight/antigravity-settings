@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "Nettoyeur de Favoris Pro",
+  "version": "3.15.0",
+  "description": "Réorganisation automatique des favoris Maison/Travail et suppression des doublons.",
+  "icons": {
+    "128": "icons/icon128.png"
+  },
+  "permissions": [
+    "bookmarks"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "128": "icons/icon128.png"
+    }
+  }
+}

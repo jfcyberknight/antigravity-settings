@@ -1,0 +1,26 @@
+remote: error: GH013: Repository rule violations found for refs/heads/master.        
+remote: 
+remote: - GITHUB PUSH PROTECTION        
+remote:   —————————————————————————————————————————        
+remote:     Resolve the following violations before pushing again        
+remote: 
+remote:     - Push cannot contain secrets        
+remote: 
+remote:             
+remote:      (?) Learn how to resolve a blocked push        
+remote:      https://docs.github.com/code-security/secret-scanning/working-with-secret-scanning-and-push-protection/working-with-push-protection-from-the-command-line#resolving-a-blocked-push        
+remote:             
+remote:             
+remote:       —— Microsoft Azure Entra ID Token ————————————————————        
+remote:        locations:        
+remote:          - commit: 8589b365d5cb9f1527f107a8a26ffd7df4af0cd0        
+remote:            path: 🧩 Extension Chrome/Bookmarks Cleaner/favoris_16_03_2026.html:1184        
+remote:             
+remote:        (?) To push, remove secret from commit(s) or follow this URL to allow the secret.        
+remote:        https://github.com/jfcyberknight/antigravity-settings/security/secret-scanning/unblock-secret/3B2Xb54DfRtx48Z5lxSU7PLvACt        
+remote:             
+remote: 
+remote: 
+To https://github.com/jfcyberknight/antigravity-settings.git
+ ! [remote rejected] master -> master (push declined due to repository rule violations)
+error: failed to push some refs to 'https://github.com/jfcyberknight/antigravity-settings.git'

@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Capture de Page Pro",
+  "version": "1.1.0",
+  "description": "Capturez une page web entière en un seul clic.",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "downloads",
+    "offscreen"
+  ],
+  "action": {
+    "default_popup": "src/popup.html",
+    "default_icon": {
+      "128": "icons/icon128.png"
+    }
+  },
+  "background": {
+    "service_worker": "src/background.js"
+  },
+  "icons": {
+    "128": "icons/icon128.png"
+  }
+}
