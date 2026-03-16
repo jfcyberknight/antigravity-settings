@@ -43,25 +43,25 @@
 
         .dashboard {
             width: 95vw;
-            max-width: 1000px;
+            max-width: 900px;
             height: 90vh;
-            max-height: 700px;
+            max-height: 600px; /* Reduced to fit zoom 125% */
             background: var(--glass);
             backdrop-filter: blur(30px);
             border: 1px solid var(--border);
-            border-radius: 30px;
-            padding: 30px; /* Reduced padding */
+            border-radius: 24px;
+            padding: 24px;
             box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8), inset 0 0 20px rgba(255, 255, 255, 0.02);
             display: grid;
-            grid-template-columns: 200px 1fr; /* Narrower sidebar */
-            gap: 30px; /* Reduced gap */
+            grid-template-columns: 180px 1fr;
+            gap: 24px;
             animation: slideUp 1s cubic-bezier(0.2, 0.8, 0.2, 1);
             position: relative;
             overflow: hidden;
         }
 
         .dashboard::after {
-            border-radius: 32px;
+            border-radius: 26px;
             content: '';
             position: absolute;
             top: -2px; left: -2px; right: -2px; bottom: -2px;
@@ -71,21 +71,21 @@
         }
 
         @keyframes slideUp {
-            from { opacity: 0; transform: translateY(40px) scale(0.98); }
+            from { opacity: 0; transform: translateY(30px) scale(0.98); }
             to { opacity: 1; transform: translateY(0) scale(1); }
         }
 
         .sidebar {
             border-right: 1px solid var(--border);
-            padding-right: 20px;
+            padding-right: 15px;
             display: flex;
             flex-direction: column;
         }
 
         .logo {
-            font-size: 24px;
+            font-size: 20px;
             font-weight: 600;
-            margin-bottom: 30px;
+            margin-bottom: 24px;
             background: linear-gradient(90deg, #fff 0%, #ff003c 100%);
             -webkit-background-clip: text;
             background-clip: text;
@@ -101,15 +101,15 @@
         }
 
         .nav-item {
-            padding: 12px 16px;
-            border-radius: 12px;
-            margin-bottom: 8px;
+            padding: 10px 14px;
+            border-radius: 10px;
+            margin-bottom: 6px;
             cursor: pointer;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             color: var(--text-dim);
             font-weight: 400;
             border: 1px solid transparent;
-            font-size: 14px;
+            font-size: 13px;
         }
 
         .nav-item.active {
@@ -121,16 +121,16 @@
 
         .nav-item:hover {
             color: #fff;
-            transform: translateX(5px);
+            transform: translateX(3px);
             background: rgba(255, 0, 60, 0.05);
         }
 
         .main-content {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 15px;
             overflow-y: auto;
-            padding-right: 15px;
+            padding-right: 10px;
             scrollbar-width: thin;
             scrollbar-color: var(--accent) transparent;
         }
@@ -146,9 +146,9 @@
 
         .header h1 {
             margin: 0;
-            font-size: 32px;
+            font-size: 28px;
             font-weight: 600;
-            letter-spacing: -1.5px;
+            letter-spacing: -1px;
         }
 
         .header p {
