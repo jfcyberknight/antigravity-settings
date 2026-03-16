@@ -9,6 +9,7 @@ Un système intelligent pour surveiller et estimer l'impact de tes requêtes sur
 - **Agent /quota-monitor** : Analyse de complexité et de tokens.
 - **Dashboard Premium** : Interface `quota_dashboard.html` avec design glassmorphic et stats en temps réel.
 - **Intégration Orchestrateur** : Alertes automatiques pour les tâches lourdes.
+- **Vercel Manager** : Automatise les déploiements et vérifie la conformité à la Règle 5.
 
 ### 🔄 GEMINI Sync
 Script de synchronisation automatique pour garder ton fichier `GEMINI.md` global à jour avec ta configuration de dépôt.

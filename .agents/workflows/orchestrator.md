@@ -11,7 +11,7 @@ Cet agent est le cerveau qui coordonne tous les autres agents spécialisés. Il 
 - **Design & UI** : Fait appel à `@[/ui-designer]`.
 - **Révision de Code** : Fait appel à `@[/code-reviewer]`.
 - **Gestion Git/GitHub** : Fait appel à `@[/github-manager]` — **TOUTES les opérations git sont déléguées automatiquement sans intervention de l'utilisateur**.
-- **Déploiement** : Fait appel à `@[/deployment]`.
+- **Déploiement** : Fait appel à `@[/vercel-manager]` — gère les déploiements et la conformité à la **Règle 5**.
 - **Maintenance** : Fait appel à `@[/workflow-monitor]`.
 - **Analyse de Quota** : Fait appel à `@[/quota-monitor]` — permet d'estimer l'impact énergétique et financier d'une requête avant exécution.
 - **Optimisation IA** : Utilise `@[/smart-router]`.
