@@ -242,16 +242,24 @@
     </div>
 
     <script>
-        async function updateDashboard() {
-            try {
-                const response = await fetch('quota_data.json', { cache: 'no-store' });
-                const data = await response.json();
+        function updateDashboard() {
+            // Remove previous script if exists
+            const oldScript = document.getElementById('data-script');
+            if (oldScript) oldScript.remove();
+
+            // Inject new script with cache buster
+            const script = document.createElement('script');
+            script.id = 'data-script';
+            script.src = 'quota_data.js?t=' + new Date().getTime();
+            
+            script.onload = () => {
+                if (!window.quotaData) return;
+                const data = window.quotaData;
 
                 document.getElementById('usage-val').innerText = data.usage + '%';
                 document.getElementById('usage-bar').style.width = data.usage + '%';
                 
                 document.getElementById('tokens-val').innerText = data.tokens;
-                // Heuristic mapping for token bar (e.g. max 500K)
                 const tokenPercent = Math.min((parseFloat(data.tokens) / 500) * 100, 100);
                 document.getElementById('tokens-bar').style.width = tokenPercent + '%';
 
@@ -261,11 +269,14 @@
                 
                 const date = new Date(data.lastUpdate);
                 document.getElementById('last-update').innerText = 'Dernière mise à jour: ' + date.toLocaleTimeString();
+            };
 
-            } catch (error) {
-                console.error('Erreur lors de la mise à jour du dashboard:', error);
-                document.getElementById('status-text').innerText = 'Erreur de synchronisation...';
-            }
+            script.onerror = () => {
+                console.error('Erreur lors du chargement de quota_data.js');
+                document.getElementById('status-text').innerText = 'Attente des données (lance /quota-monitor)...';
+            };
+
+            document.body.appendChild(script);
         }
 
         // Update every 5 seconds

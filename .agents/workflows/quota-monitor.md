@@ -29,10 +29,11 @@ L'agent utilise les critères suivants pour évaluer l'impact :
        status = "Analyse terminée. Impact de la requête : $impact."
        lastUpdate = (Get-Date -Format "yyyy-MM-ddTHH:mm:ssZ")
    }
-   $data | ConvertTo-Json | Out-File -FilePath "quota_data.json" -Encoding utf8
+   $jsonData = $data | ConvertTo-Json -Compress
+   "window.quotaData = $jsonData;" | Out-File -FilePath "quota_data.js" -Encoding utf8
    Write-Host "--- QUOTA IMPACT REPORT ---"
    Write-Host "Impact: $impact"
-   Write-Host "Data saved to quota_data.json"
+   Write-Host "Data saved to quota_data.js"
    ```
 
 2. **Générer le rapport visuel** :
