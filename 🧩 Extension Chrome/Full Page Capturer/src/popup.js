@@ -12,6 +12,14 @@ document.getElementById('captureBtn').addEventListener('click', async () => {
   // Request the capture from background script
   const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
   
+  if (tab.url.startsWith('chrome://') || tab.url.startsWith('chrome-extension://') || tab.url.startsWith('edge://')) {
+    alert('Impossible de capturer une page système du navigateur.');
+    btn.disabled = false;
+    progressWrapper.style.display = 'none';
+    container.classList.remove('processing');
+    return;
+  }
+  
   chrome.runtime.sendMessage({ action: 'start_capture', tabId: tab.id });
 });
 

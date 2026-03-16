@@ -88,8 +88,12 @@ chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
       chrome.runtime.sendMessage({ action: 'finalize_capture' });
 
     } catch (error) {
-      console.error(error);
-      chrome.runtime.sendMessage({ action: 'capture_error', error: error.message });
+      console.error("Capture Error:", error);
+      let errorMsg = error.message;
+      if (errorMsg.includes('Cannot access a chrome:// URL')) {
+        errorMsg = "Impossible de capturer cette page système (sécurité du navigateur).";
+      }
+      chrome.runtime.sendMessage({ action: 'capture_error', error: errorMsg });
     }
   }
 
