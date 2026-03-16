@@ -29,10 +29,15 @@ Exécute le script de synchronisation pour lier ton `GEMINI.md` global :
 Les agents situés dans `.agents/workflows/` sont détectés automatiquement par Antigravity lorsqu'ils sont présents dans ton espace de travail actif.
 - Assure-toi que ce dépôt est ouvert ou que les fichiers sont synchronisés vers ton dossier de scratch via `@[/agent-sync]`.
 
-### 3. Utilisation du Dashboard
-Pour consulter ton quota visuellement :
-1. Ouvre `quota_dashboard.html` dans ton navigateur préféré.
-2. Le dashboard se met à jour dynamiquement en fonction des métriques fournies par l'agent `/quota-monitor`.
+### 3. Extension Chrome (Dashboard)
+Tu peux maintenant utiliser le dashboard comme une extension Chrome pour un accès rapide :
+1. Ouvre Chrome et accède à `chrome://extensions/`.
+2. Active le **Mode développeur** (en haut à droite).
+3. Clique sur **Charger l'extension décompressée** et sélectionne le dossier de ce projet (`c:\Users\jf.vallee\project\antigravity-settings`).
+4. Épingle l'icône Antigravity Quota Monitor pour y accéder en un clic !
+
+> [!NOTE]
+> Le dashboard se met à jour toutes les 5 secondes en lisant le fichier `quota_data.js` mis à jour par l'agent `/quota-monitor`.
 
 ---
 
